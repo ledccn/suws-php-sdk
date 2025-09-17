@@ -1,0 +1,8 @@
+/.idea
+/suws-darwin-amd64
+/suws-darwin-arm64
+/suws-linux-amd64
+/suws-linux-arm64
+/suws-windows-amd64.exe
+/suws
+/*.exe

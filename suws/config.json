@@ -1,0 +1,8 @@
+{
+  "token": "your_api_token",
+  "webhook": "https://you_webhook_url/webhook",
+  "webhook_timeout": 5,
+  "log": {
+    "verbose": false
+  }
+}
