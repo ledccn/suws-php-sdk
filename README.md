@@ -1,6 +1,6 @@
 # Su WebSocket服务
 
-Su WebSocket服务是一个高性能的WebSocket服务器，支持客户端连接管理、UID管理、群组管理、消息推送、RPC调用等功能。
+Su WebSocket是一个高性能的WebSocket服务器，支持客户端连接管理、UID管理、群组管理、消息推送、RPC调用等功能。
 
 完全参考GatewayWorker设计的HTTP管理API接口。 
 
