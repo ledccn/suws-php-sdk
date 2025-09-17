@@ -1,6 +1,6 @@
 {
   "name": "ledc/websocket",
-  "description": "Su WebSocket是一个高性能的WebSocket服务器，支持客户端连接管理、UID管理、群组管理、消息推送、RPC调用等功能；完全参考GatewayWorker设计的HTTP管理API接口。",
+  "description": "Su WebSocket是一个go语言编写的高性能WebSocket服务器，支持客户端连接管理、UID管理、群组管理、消息推送、RPC调用等功能；完全参考GatewayWorker设计的HTTP管理API接口。",
   "type": "library",
   "license": "MIT",
   "autoload": {
