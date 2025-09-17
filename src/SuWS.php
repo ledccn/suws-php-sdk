@@ -35,7 +35,7 @@ class SuWS
      * @param int $timeout 请求超时时间
      * @param string $url 接口服务地址
      */
-    final public function __construct(public readonly string $token, public readonly int $timeout = 5, string $url = 'https://websocket.iyuu.net/api')
+    final public function __construct(public readonly string $token, public readonly int $timeout = 5, string $url = 'https://suws.cn/api')
     {
         $this->url = $url;
     }
@@ -553,14 +553,14 @@ class SuWS
 
     /**
      * 单例
-     * @return SuWS|null
+     * @return SuWS
      */
-    final public static function getInstance(): ?SuWS
+    final public static function getInstance(): SuWS
     {
         $token = getenv('SUWS_TOKEN') ?: '';
         $timeout = getenv('SUWS_TIMEOUT') ?: 5;
         $url = getenv('SUWS_URL') ?: 'http://127.0.0.1:8788/api';
-        return static::$instance ?? (static::$instance = new static($token, (int)$timeout, $url));
+        return static::$instance ?? (static::$instance = self::make($token, (int)$timeout, $url));
     }
 
     /**
@@ -570,7 +570,7 @@ class SuWS
      * @param string $url 接口服务地址
      * @return SuWS
      */
-    final public static function make(string $token, int $timeout, string $url): static
+    final public static function make(string $token, int $timeout = 5, string $url = 'https://suws.cn/api'): static
     {
         return new static($token, $timeout, $url);
     }
