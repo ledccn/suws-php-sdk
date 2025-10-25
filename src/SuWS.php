@@ -669,7 +669,7 @@ class SuWS
      * @return array|null
      * @throws BusinessException|BadRequestException
      */
-    final public function parseHttpResponse(Curl $curl): ?array
+    final public function parseHttpResponse(Curl $curl): array
     {
         $response = $curl->getResponse();
         if (empty($response)) {
