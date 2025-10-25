@@ -619,12 +619,12 @@ class SuWS
      * @param string|ApiRoute $method
      * @param array|object|string $payload
      * @param array $headers
-     * @return array|null
+     * @return array
      * @throws BadRequestException
      * @throws BusinessException
      * @throws InvalidArgumentException
      */
-    final public function request(string|ApiRoute $uri, string|ApiRoute $method, array|object|string $payload = [], array $headers = []): ?array
+    final public function request(string|ApiRoute $uri, string|ApiRoute $method, array|object|string $payload = [], array $headers = []): array
     {
         // 兼容枚举
         $uri = $uri instanceof ApiRoute ? $uri->value : $uri;
