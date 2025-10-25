@@ -672,20 +672,6 @@ class SuWS
     final public function parseHttpResponse(Curl $curl): ?array
     {
         $response = $curl->getResponse();
-        if ($curl->isSuccess()) {
-            if (empty($response)) {
-                return null;
-            }
-            $result = json_decode($response, true);
-            $code = $result['code'] ?? -1;
-            if (0 === $code) {
-                return $result;
-            }
-
-            $message = $result['message'] ?? 'A服务器未返回错误信息';
-            throw new BusinessException($message, $code);
-        }
-
         if (empty($response)) {
             $httpStatus = $curl->getHttpStatus();
             $curlErrorNo = $curl->getErrorCode();
@@ -695,7 +681,10 @@ class SuWS
 
         $result = json_decode($response, true);
         $code = $result['code'] ?? -1;
-        $message = $result['message'] ?? 'B服务器未返回错误信息';
+        $message = $result['message'] ?? 'SUWS未返回错误信息';
+        if ($curl->isSuccess() && 0 === $code) {
+            return $result;
+        }
         throw new BusinessException($message, $code);
     }
 
