@@ -645,10 +645,14 @@ class SuWS
         $curl->setHeaders($headers);
         if ($this->isSecureMode()) {
             // 安全模式（签名验证）
-            $payload = is_string($payload) ? $payload : json_encode($payload, JSON_UNESCAPED_UNICODE);
             $timestamp = time() * 1000;
             $curl->setHeader('Timestamp', (string)$timestamp);
-            $curl->setHeader('Signature', $this->generateSignature($payload, (string)$timestamp));
+            if ('GET' === $method) {
+                $curl->setHeader('Signature', $this->generateSignature('', (string)$timestamp));
+            } else {
+                $payload = is_string($payload) ? $payload : json_encode($payload, JSON_UNESCAPED_UNICODE);
+                $curl->setHeader('Signature', $this->generateSignature($payload, (string)$timestamp));
+            }
         } else {
             // 普通模式（Token验证）
             $curl->setHeader('Token', $this->token);
